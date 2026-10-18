@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff8ef">
+<meta name="description" content="Tietoinen Yhteys – harjoittele itsetuntemusta, vuorovaikutustaitoja ja turvallisuutta omaan tahtiisi.">
+<title>Tietoinen Yhteys – Yhteyttä voi oppia rakentamaan</title>
+<style>
+:root{
+  --ink:#16395d;
+  --ink-soft:#35526f;
+  --outline:#3f2a24;
+  --paper:#fffaf4;
+  --paper-2:#fff5e7;
+  --card:#fffdf9;
+  --shadow:0 18px 48px rgba(19,37,66,.12);
+  --coral:#ff7c59;
+  --sun:#f1de43;
+  --aqua:#40d2c7;
+  --violet:#a147d9;
+  --blue:#2857df;
+  --green:#4ec35a;
+  --pink:#f5a9cf;
+  --orange:#f5ae5a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255,124,89,.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(40,87,223,.12), transparent 30%),
+    radial-gradient(circle at 20% 75%, rgba(161,71,217,.09), transparent 24%),
+    linear-gradient(180deg,#fffdf8 0%, #fff8ef 100%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.container{width:min(1240px,calc(100% - 44px));margin:auto}
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(255,250,244,.86);
+  backdrop-filter:blur(16px);
+  border-bottom:2px solid rgba(63,42,36,.08);
+}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 0}
+.logo{display:flex;align-items:center;gap:10px;font:700 27px Georgia,serif;color:var(--ink);white-space:nowrap}
+.links{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.links a{
+  font-size:14px;font-weight:800;letter-spacing:.01em;
+  padding:11px 15px;border-radius:999px;
+  border:2px solid transparent;transition:.18s ease;
+}
+.links a:hover{background:#fff;border-color:rgba(63,42,36,.12);transform:translateY(-1px)}
+.links a.active,.links a[aria-current="page"]{background:#fff;border-color:rgba(63,42,36,.16);box-shadow:0 6px 14px rgba(22,57,93,.06)}
+.hero{position:relative;overflow:hidden;padding:64px 0 32px}
+.hero::before{
+  content:"";position:absolute;inset:18px 24px auto 24px;height:12px;border-radius:999px;
+  background:linear-gradient(90deg,var(--coral),var(--aqua),var(--blue),var(--violet),var(--sun),var(--green),var(--coral));
+  box-shadow:0 6px 18px rgba(40,87,223,.12);
+}
+.hero-simple{display:flex;justify-content:center;align-items:center;text-align:center;position:relative}
+.hero-art{
+  position:absolute;inset:-20px 0 auto 0;height:280px;pointer-events:none;opacity:.98;
+}
+.hero-art::before,.hero-art::after{content:"";position:absolute;filter:drop-shadow(0 15px 22px rgba(38,41,64,.09));}
+.hero-art::before{
+  left:-4%;top:30px;width:280px;height:210px;border:3px solid rgba(63,42,36,.18);border-radius:28px;
+  background:
+    linear-gradient(128deg,var(--coral) 0 14%, transparent 14% 16%, var(--aqua) 16% 26%, transparent 26% 28%, var(--blue) 28% 42%, transparent 42% 44%, var(--pink) 44% 62%, transparent 62% 64%, var(--sun) 64% 78%, transparent 78% 80%, var(--green) 80% 100%),
+    linear-gradient(40deg,transparent 0 18%, rgba(255,255,255,.25) 18% 20%, transparent 20% 100%),
+    linear-gradient(160deg,#fff7ef,#fff1e0);
+  clip-path:polygon(0 0, 86% 0, 100% 19%, 100% 100%, 10% 100%, 0 78%);
+  transform:rotate(-8deg);
+}
+.hero-art::after{
+  right:-2%;top:34px;width:330px;height:220px;border:3px solid rgba(63,42,36,.18);border-radius:999px;
+  background:
+    radial-gradient(circle at 25% 50%, var(--sun) 0 15%, transparent 16%),
+    radial-gradient(circle at 72% 38%, var(--pink) 0 18%, transparent 19%),
+    linear-gradient(140deg,var(--blue) 0 24%, transparent 24% 26%, var(--violet) 26% 40%, transparent 40% 42%, var(--aqua) 42% 58%, transparent 58% 60%, var(--orange) 60% 79%, transparent 79% 81%, var(--green) 81% 100%),
+    linear-gradient(180deg,#fff3eb,#fffaf7);
+  transform:rotate(8deg);
+}
+.hero-text{position:relative;z-index:1;max-width:900px;padding:42px 0 12px}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,5.4vw,78px);line-height:1.03;margin:34px auto 14px;letter-spacing:-.04em;max-width:900px}
+.hero p{font-family:Georgia,serif;font-size:clamp(19px,1.7vw,26px);line-height:1.45;color:var(--ink-soft);max-width:830px;margin:0 auto}
+.section{padding:34px 0 54px}
+.intro{text-align:center;max-width:720px;margin:0 auto 28px}
+.eyebrow{
+  display:inline-block;padding:8px 14px;border-radius:999px;border:2px solid rgba(63,42,36,.1);background:#fff;
+  font-size:11px;letter-spacing:.25em;font-weight:900;color:#8b5b2d;text-transform:uppercase;box-shadow:0 8px 18px rgba(22,57,93,.05)
+}
+.intro h2{font:700 39px Georgia,serif;margin:18px 0 10px;letter-spacing:-.03em}
+.intro p{color:var(--ink-soft);font-size:16px;line-height:1.68;margin:0}
+.explorer{
+  position:relative;padding:26px 26px 34px;border:3px solid rgba(63,42,36,.14);border-radius:34px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,249,242,.94)),
+    linear-gradient(115deg, rgba(255,124,89,.12), rgba(64,210,199,.12), rgba(40,87,223,.09));
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.explorer::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.23;
+  background:
+    linear-gradient(126deg, transparent 0 8%, rgba(255,124,89,.75) 8% 9.3%, transparent 9.3% 15%, rgba(64,210,199,.6) 15% 16.3%, transparent 16.3% 26%, rgba(245,169,207,.7) 26% 27.2%, transparent 27.2% 100%),
+    linear-gradient(38deg, transparent 0 74%, rgba(40,87,223,.65) 74% 75.4%, transparent 75.4% 100%),
+    linear-gradient(160deg, transparent 0 54%, rgba(241,222,67,.75) 54% 55.1%, transparent 55.1% 100%);
+}
+.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;position:relative;z-index:1}
+.tab{
+  padding:12px 20px;border-radius:999px;border:2px solid rgba(63,42,36,.12);background:#fff;color:var(--ink-soft);
+  font-size:13px;font-weight:900;letter-spacing:.03em;box-shadow:0 5px 12px rgba(22,57,93,.05);transition:.18s ease;
+}
+.tab:hover{transform:translateY(-1px)}
+.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.compass-wrap{overflow-x:auto;overflow-y:hidden;scrollbar-color:#c5b5ff transparent;position:relative;z-index:1}
+.compass{position:relative;width:860px;height:760px;margin:0 auto;--accent:var(--blue)}
+.compass svg{width:100%;height:100%;position:absolute;inset:0;pointer-events:none}
+.compass-label{
+  position:absolute;left:0;top:0;width:154px;min-height:48px;padding:10px 12px;transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.18;
+  font-size:13px;font-weight:800;color:var(--ink);background:rgba(255,255,255,.94);
+  border:2px solid rgba(63,42,36,.15);border-radius:16px;box-shadow:0 8px 18px rgba(22,57,93,.08);
+  transition:.16s ease;
+}
+.compass-label:hover,.compass-label.selected{transform:translate(-50%,-52%);background:#fff6e3;border-color:var(--accent);box-shadow:0 10px 20px rgba(22,57,93,.12)}
+.compass-center{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:50%;
+  border:5px solid rgba(63,42,36,.18);
+  background:radial-gradient(circle at center,#fff 0 58%, #f6f4ef 58% 100%);
+  display:grid;place-items:center;text-align:center;padding:34px;
+  font-weight:900;font-size:18px;line-height:1.08;color:var(--ink);
+  overflow-wrap:anywhere;word-break:break-word;hyphens:auto;
+  box-shadow:inset 0 0 0 11px rgba(255,255,255,.95), 0 18px 28px rgba(22,57,93,.10);
+}
+.compass-center::before{
+  content:"";position:absolute;inset:24px;border-radius:50%;border:2px dashed rgba(63,42,36,.15);
+}
+.compass-center::after{
+  content:"";position:absolute;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--sun),#ffe8a0);border:3px solid rgba(63,42,36,.16);
+}
+.help{text-align:center;color:#7a5860;font-size:13px;margin:10px 0 20px;position:relative;z-index:1;font-weight:700}
+.topic-detail{
+  position:relative;z-index:1;border:2px solid rgba(63,42,36,.12);border-radius:28px;background:rgba(255,255,255,.97);padding:30px;
+  animation:rise .25s ease-out;box-shadow:0 10px 22px rgba(22,57,93,.07)
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.topic-head{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.topic-head h3{font:700 33px Georgia,serif;margin:10px 0 10px;letter-spacing:-.02em}
+.topic-detail p{line-height:1.75;color:var(--ink-soft);max-width:900px;margin:0;font-size:15px}
+.close{border:2px solid rgba(63,42,36,.08);background:#fff7ea;border-radius:999px;width:38px;height:38px;color:var(--ink);font-weight:900}
+.detail-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.detail-box{padding:22px;border-radius:20px;border:2px solid rgba(63,42,36,.08);background:linear-gradient(180deg,#fff4ef,#fffdfb)}
+.detail-box:nth-child(2){background:linear-gradient(180deg,#eef9f7,#fffdfb)}
+.detail-box h4{margin:0 0 12px;font-size:18px}
+.detail-box ul,.exercise-box ol{margin:0;padding-left:20px;color:var(--ink-soft);line-height:1.78;font-size:14px}
+.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{
+  border-radius:999px;border:2px solid rgba(63,42,36,.12);background:#fff;color:var(--ink);padding:11px 20px;font-weight:900;font-size:13px;
+  box-shadow:0 6px 14px rgba(22,57,93,.06);transition:.18s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(90deg,var(--coral),#ff9666);color:#fff;border-color:transparent}
+.exercise-box{margin-top:15px;padding:20px;border-radius:18px;border:2px solid rgba(63,42,36,.08);background:linear-gradient(180deg,#f7fbff,#fff)}
+.exercise-box h4{margin:0 0 8px}
+.exercise-box p{margin-bottom:14px}
+.exercise-box textarea{width:100%;min-height:100px;border:2px solid rgba(63,42,36,.12);border-radius:14px;padding:12px;resize:vertical;font:inherit;background:#fffdfb}
+.exercise-box small{display:block;margin-top:8px;color:#7c7281}
+.hidden{display:none !important}
+footer{padding:22px 0 28px;color:#6f7487;font-size:12px}
+.footer-flex{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:2px solid rgba(63,42,36,.08);padding-top:18px}
+.hero-chipbar{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px}
+.hero-chip{padding:8px 12px;border-radius:999px;background:#fff;border:2px solid rgba(63,42,36,.1);font-size:12px;font-weight:800;box-shadow:0 8px 16px rgba(22,57,93,.05)}
+.page-shell{padding:44px 0 68px}
+.page-card{position:relative;max-width:980px;margin:0 auto;padding:34px;border-radius:34px;background:rgba(255,255,255,.95);border:3px solid rgba(63,42,36,.12);box-shadow:var(--shadow);overflow:hidden}
+.page-card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.2;background:linear-gradient(135deg,var(--coral),transparent 18%, transparent 62%, var(--blue) 62%, transparent 63%),linear-gradient(45deg,transparent 0 20%, var(--sun) 20% 21%, transparent 21% 100%),linear-gradient(165deg,transparent 0 78%, var(--aqua) 78% 79%, transparent 79% 100%)}
+.page-card > *{position:relative;z-index:1}
+.page-card h1{font:700 clamp(38px,5vw,68px) Georgia,serif;margin:4px 0 10px;letter-spacing:-.04em}
+.page-card p{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:740px}
+.placeholder-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.placeholder{padding:22px;border-radius:24px;background:#fffaf2;border:2px solid rgba(63,42,36,.1)}
+.placeholder:nth-child(2){background:#f7f2ff}.placeholder:nth-child(3){background:#eefbf7}.placeholder:nth-child(4){background:#fff2f0}
+.placeholder h3{margin:0 0 8px;font-size:20px}
+.placeholder p{font-size:15px;margin:0;max-width:none}
+.back-link{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:800;padding:10px 16px;border-radius:999px;background:#fff;border:2px solid rgba(63,42,36,.1)}
+@media (max-width:920px){
+  .nav{align-items:flex-start}.logo{font-size:22px}.links{gap:6px}.links a{padding:9px 12px;font-size:13px}
+  .hero{padding:56px 0 22px}.hero-art::before{width:210px;height:160px}.hero-art::after{width:250px;height:170px}
+  .explorer{padding:18px 12px 24px}.compass{width:780px;height:710px}.detail-columns,.placeholder-grid{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .container{width:min(100% - 24px,900px)}
+  .nav{min-height:unset;padding:12px 0 14px;flex-direction:column;align-items:flex-start}
+  .hero h1{font-size:44px}.hero p{font-size:19px}.hero-chipbar{gap:6px}
+  .intro h2{font-size:31px}.compass{width:720px;height:680px}.compass-label{width:136px;font-size:12px}.compass-center{width:190px;height:190px;padding:28px;font-size:16px}
+}
+@media (max-width:460px){
+  .links a{font-size:12px;padding:8px 10px}
+  .logo{font-size:19px}  .hero::before{left:12px;right:12px}.hero-art{display:none}.hero h1{font-size:38px}.hero p{font-size:18px}
+  .tab{padding:10px 14px;font-size:12px}.compass{width:660px;height:650px}.compass-center{width:170px;height:170px;padding:24px;font-size:15px;line-height:1.05}
+}
+
+/* Tietoinen Yhteys — quiet contemporary design system */
+:root{--ink:#193b43;--ink-soft:#567077;--outline:#e0e9e8;--paper:#f6f8f6;--paper-2:#ecf3ef;--card:#ffffff;--shadow:0 22px 65px rgba(27,57,62,.06);--coral:#dba18b;--sun:#e2c799;--aqua:#8ec6bf;--violet:#9eabc5;--blue:#658fa6;--green:#8fb3a1;--pink:#e9c5c0;--orange:#d6b09b}
+html{scroll-padding-top:100px}
+body{background:#f8faf9;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;line-height:1.5}
+.topbar{background:rgba(251,253,252,.94);border-bottom:1px solid #e5ebea;box-shadow:none}
+.container{width:min(1160px,calc(100% - 48px))}
+.nav{min-height:76px;padding:10px 0}
+.logo{font:600 25px Georgia,serif;color:#173b43;gap:9px;letter-spacing:-.025em}
+.links{gap:6px}
+.links a{font-size:13px;font-weight:650;color:#45616a;letter-spacing:0;padding:10px 15px;border:1px solid transparent;border-radius:12px}
+.links a:hover{background:#ecf3f1;border-color:transparent;transform:none}
+.links a.active,.links a[aria-current="page"]{background:#e8f1ee;color:#22544f;border-color:transparent;box-shadow:none}
+.hero{padding:82px 0 49px;background:radial-gradient(ellipse at 50% 0%,#edf4f1 0%,#f8faf9 62%);border-bottom:0}
+.hero::before{display:none}
+.hero-art{display:none}
+.hero-text{max-width:850px;padding:0}
+.hero h1{font:600 clamp(41px,5.3vw,74px)/1.08 Georgia,serif;max-width:830px;letter-spacing:-.044em;margin:0 auto 22px;color:#183a41}
+.hero p{font:normal clamp(18px,1.7vw,23px)/1.55 Georgia,serif;color:#627980;max-width:790px}
+.hero-chipbar{display:none}
+.section{padding:24px 0 78px}
+.intro{max-width:700px;margin:0 auto 28px}
+.eyebrow{background:none;border:0;box-shadow:none;padding:0;color:#68958b;font-size:11px;letter-spacing:.22em;font-weight:800}
+.intro h2{font:600 clamp(29px,3.5vw,41px)/1.15 Georgia,serif;letter-spacing:-.03em;margin:13px 0 10px}
+.intro p{font-size:15px;color:#667e83}
+.explorer{border:1px solid #e2eae8;border-radius:26px;background:#fff;box-shadow:0 24px 60px rgba(23,59,67,.06);padding:30px 25px 33px}
+.explorer::before{display:none}
+.tabs{margin-bottom:23px;gap:10px}
+.tab{display:inline-flex;align-items:center;gap:10px;border:1px solid #dce7e4;background:#f8faf9;color:#537078;font-size:13px;letter-spacing:0;font-weight:650;padding:10px 16px;box-shadow:none}.tab-icon{width:28px;height:28px;border-radius:999px;display:grid;place-items:center;background:#edf3f1;color:#5d7d7c;flex:0 0 auto}.tab-icon svg{width:18px;height:18px;display:block}.tab-label{display:inline-block;line-height:1.1}.tab[data-tab="self"] .tab-icon{background:#e6f0ee;color:#2b6b69}.tab[data-tab="interaction"] .tab-icon{background:#eaf2f5;color:#356b7f}.tab[data-tab="safety"] .tab-icon{background:#f6efea;color:#9b6d69}
+.tab:hover{background:#eaf3f0;transform:none}
+.tab.active{background:#285e62;border-color:#285e62;color:white;box-shadow:0 8px 17px rgba(39,91,93,.13)}.tab.active .tab-icon{background:rgba(255,255,255,.16);color:#fff}
+.compass-wrap{scrollbar-color:#c7d8d5 transparent}
+.compass{--accent:#6f9c9c}
+.compass-label{background:#fff;width:154px;min-height:48px;border:1px solid #dce6e5;color:#3e5a61;border-radius:13px;box-shadow:0 5px 15px rgba(34,71,74,.05);font-size:12px;font-weight:650;transition:background .15s,border-color .15s,box-shadow .15s}
+.compass-label:hover,.compass-label.selected{transform:translate(-50%,-50%);background:#eaf5f2;border:1px solid var(--accent);box-shadow:0 7px 19px rgba(35,87,88,.13)}
+.compass-center{border:3px solid #659696;background:#fff;box-shadow:0 12px 30px rgba(38,81,81,.10),inset 0 0 0 10px #f3f8f6;color:#254b51;font-size:17px;line-height:1.05;letter-spacing:-.01em;padding:34px;overflow-wrap:anywhere;word-break:break-word}
+.compass-center::before,.compass-center::after{display:none}
+.compass-center.long-title{font-size:14px;letter-spacing:-.035em;white-space:nowrap;word-break:normal;overflow-wrap:normal;padding:8px;font-weight:750}
+@media(max-width:700px){.compass-center.long-title{font-size:13px;padding:7px}}
+@media(max-width:460px){.compass-center.long-title{font-size:12px;padding:5px}}
+.help{font-size:13px;color:#7c9293;font-weight:400;margin:13px 0 20px}
+.topic-detail{border:1px solid #e0eae8;border-radius:21px;background:#fcfefd;box-shadow:none;padding:30px}
+.topic-head h3{font:600 32px Georgia,serif;color:#204850}
+.topic-detail p{color:#59767b}
+.close{border:0;background:#e8f0ee;color:#37656c}
+.detail-box{border:0;border-radius:16px;background:#edf5f2}
+.detail-box:nth-child(2){background:#f1f4f7}
+.detail-box h4{font-weight:700}
+.detail-box ul,.exercise-box ol{color:#536f75}
+.btn{background:#fff;border:1px solid #c8dbd6;color:#36666a;box-shadow:none;font-weight:700}
+.btn:hover{background:#eff6f3;transform:none}
+.btn.primary{background:#2d7270;color:#fff;border-color:#2d7270}
+.btn.primary:hover{background:#235f5e}
+.exercise-box{border:1px solid #dce7e5;background:#f2f8f6}
+.exercise-box textarea{border:1px solid #c9dbd6;background:white}
+footer{color:#8a9d9f}
+.footer-flex{border-top:1px solid #e3ebe8}
+.page-shell{padding:65px 0 90px}
+.page-card{max-width:900px;border:1px solid #e0eae8;border-radius:26px;box-shadow:var(--shadow);background:white;padding:45px}
+.page-card::before{display:none}
+.page-card h1{font:600 clamp(40px,5vw,63px) Georgia,serif;color:#20434a}
+.page-card p{color:#5f797f}
+.placeholder{border:1px solid #e2ebe8;border-radius:17px;background:#f2f8f5}
+.placeholder:nth-child(2){background:#f2f5f8}.placeholder:nth-child(3){background:#f8f5f1}.placeholder:nth-child(4){background:#f6f5f8}
+.back-link{border:1px solid #d0e0dc;color:#386b6b}
+@media(max-width:920px){.hero{padding:65px 0 36px}.explorer{padding:22px 13px}.compass{width:780px;height:710px}}
+@media(max-width:700px){.container{width:calc(100% - 28px)}.nav{gap:8px}.hero{padding:53px 0 30px}.hero h1{font-size:clamp(39px,8vw,54px)}.hero p{font-size:18px}.section{padding-bottom:50px}.intro h2{font-size:32px}.compass{width:720px;height:680px}.compass-label{width:136px;font-size:12px}.page-card{padding:25px}.links{gap:0}}
+@media(max-width:460px){.logo{font-size:20px}.links a{padding:8px 10px}.hero h1{font-size:39px}.explorer{padding:18px 9px}.compass{width:660px;height:650px}.tab{padding:9px 11px;font-size:12px;gap:8px}.tab-icon{width:24px;height:24px}.tab-icon svg{width:15px;height:15px}.topic-detail{padding:19px}}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="container nav" aria-label="Päänavigaatio">
+    <a class="logo" href="#alku">Tietoinen Yhteys</a>
+    <div class="links">
+      <a class="active" href="#alku">Etusivu</a>
+      <a href="#kompassi">Ihmisyhteyden kompassi</a>
+      <a href="kurssit.html">Kurssit</a>
+      <a href="luennot.html">Luennot</a>
+      <a href="yhteiso.html">Yhteisö</a><a href="yhteystiedot.html">Yhteystiedot</a>
+    </div>
+  </nav>
+</header>
+
+<main id="alku">
+  <section class="hero">
+    <div class="hero-art" aria-hidden="true"></div>
+    <div class="container hero-simple">
+      <div class="hero-text">
+        <h1>Yhteyttä voi oppia rakentamaan.</h1>
+        <p>Harjoittele itsetuntemusta, vuorovaikutustaitoja ja turvallisuutta – askel kerrallaan.</p>
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="kompassi" class="container section">
+    <div class="intro">
+      <div class="eyebrow">Tutki · Ymmärrä · Harjoittele</div>
+      <h2>Ihmisyhteyden kompassi</h2>
+      <p>Valitse pääpilari ja tutki aihealueita. Klikkaa kompassin sakaraa avataksesi yleisselityksen ja syventymismahdollisuuksia.</p>
+    </div>
+    <div class="explorer">
+      <div class="tabs" role="tablist" aria-label="Ihmisyhteyden pääpilarit">
+        <button class="tab" role="tab" data-tab="self" aria-selected="false"><span class="tab-icon"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4.2a3.5 3.5 0 0 0-5 3.2 4 4 0 0 0-.7 6.9A3.7 3.7 0 0 0 8 20h2.5V4.2ZM13.5 4.2a3.5 3.5 0 0 1 5 3.2 4 4 0 0 1 .7 6.9A3.7 3.7 0 0 1 16 20h-2.5V4.2Z"/><path d="M10.5 9c-2.1 0-2.8 1-2.8 2.4M10.5 16c-2-1.4-3.4-.8-4.2.5M13.5 9c2.1 0 2.8 1 2.8 2.4M13.5 16c2-1.4 3.4-.8 4.2.5"/></g></svg></span><span class="tab-label">Itsetuntemus</span></button>
+        <button class="tab active" role="tab" data-tab="interaction" aria-selected="true"><span class="tab-icon"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M5 5.2h14a2.8 2.8 0 0 1 2.8 2.8v5.6A2.8 2.8 0 0 1 19 16.4h-5.1l-4.4 3.4v-3.4H5A2.8 2.8 0 0 1 2.2 13.6V8A2.8 2.8 0 0 1 5 5.2Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></span><span class="tab-label">Vuorovaikutustaidot</span></button>
+        <button class="tab" role="tab" data-tab="safety" aria-selected="false"><span class="tab-icon"><svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.2 4.9 13.5A4.44 4.44 0 0 1 3.5 10.2C3.5 7.5 5.7 5.4 8.4 5.4c1.5 0 2.9.7 3.8 1.8.9-1.1 2.3-1.8 3.8-1.8 2.7 0 4.9 2.1 4.9 4.8 0 1.3-.5 2.5-1.4 3.3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="tab-label">Turvallisuus</span></button>
+      </div>
+      <div class="compass-wrap" aria-label="Vieritettävä aihealueiden kompassi"><div id="compass" class="compass"></div></div>
+      <p class="help">Valitse kompassista aihe, niin löydät sen alta selityksen ja harjoituksen.</p>
+      <div id="details" class="topic-detail hidden" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-flex">
+    <span>© <span id="year"></span> Tietoinen Yhteys</span>
+    <span>Oppimista, oivalluksia ja ihmisyhteyttä</span>
+  </div>
+</footer>
+
+<script>
+const DATA={self:{title:'Itsetuntemus',color:'#b97b62',topics:['Tunteet','Tarpeet','Rajat','Muisti','Minäkuva','Arvot','Uskomukset','Ajatusmallit','Kehotietoisuus','Toimintamallit','Motivaatio','Itsemyötätunto']},interaction:{title:'Vuorovaikutustaidot',color:'#4185a5',topics:['Kuunteleminen','Itseilmaisu','Näkökulman vaihtaminen','Empatia','Ymmärtäminen','Dialogisuus','Tulkintojen tunnistaminen','Sanaton viestintä','Konfliktinhallinta','Palautetaidot','Neuvottelutaidot','Tunnetaidot']},safety:{title:'Turvallisuus',color:'#729785',topics:['Luottamus','Kunnioitus','Vastuunotto','Rajojen kunnioitus','Psykologinen turvallisuus','Emotionaalinen turvallisuus','Ennakoitavuus','Suostumus','Turvallinen kiintymys','Korjaaminen','Yhdenvertaisuus','Koskemattomuus']}};
+const DESCRIPTIONS={
+'Tunteet':'Tunteet kertovat siitä, miten koemme tilanteita ja mitä meille on merkityksellistä. Niiden tunnistamista ja sanoittamista voi harjoitella.',
+'Tarpeet':'Tarpeiden tunnistaminen auttaa hahmottamaan, mitä kaipaat ja millaisissa olosuhteissa voit hyvin.',
+'Rajat':'Rajat auttavat tunnistamaan, mikä on sinulle sopivaa. Niitä voidaan ilmaista selkeästi ja toisia kunnioittaen.',
+'Muisti':'Muistot ja aikaisemmat kokemukset vaikuttavat siihen, millaisia merkityksiä annamme nykyhetken tapahtumille ja itsellemme.',
+'Minäkuva':'Minäkuva tarkoittaa käsityksiäsi itsestäsi, ominaisuuksistasi ja kyvyistäsi. Se voi muuttua kokemusten ja reflektion myötä.',
+'Arvot':'Arvot ovat asioita ja periaatteita, joita pidät tärkeinä. Ne voivat auttaa tekemään itsesi näköisiä valintoja.',
+'Uskomukset':'Uskomukset ovat käsityksiä itsestä, muista ihmisistä ja maailmasta. Kaikki uskomukset eivät ole tosiasioita.',
+'Ajatusmallit':'Toistuvat ajatusmallit ohjaavat sitä, miten tulkitset tilanteita. Niiden huomaaminen antaa mahdollisuuden tarkastella muita vaihtoehtoja.',
+'Kehotietoisuus':'Keholliset tuntemukset, vireystila ja jännitys voivat auttaa tunnistamaan kuormitusta, turvallisuutta ja tunnekokemuksia.',
+'Toimintamallit':'Toimintamallit ovat opittuja tapoja reagoida ja toimia. Niiden tunnistaminen mahdollistaa tietoisempia valintoja.',
+'Motivaatio':'Motivaatio liittyy siihen, mitä kohti haluat kulkea, miksi tavoitteesi ovat tärkeitä ja miten ylläpidät toimintaa.',
+'Itsemyötätunto':'Itsemyötätunto on taitoa suhtautua itseensä ymmärtävästi myös vaikeuksien, virheiden ja keskeneräisyyden keskellä.',
+'Kuunteleminen':'Kuunteleminen on keskittymistä siihen, mitä toinen pyrkii kertomaan. Tarkentavat kysymykset auttavat välttämään oletuksia.',
+'Itseilmaisu':'Itseilmaisussa sanoitat omia havaintojasi, ajatuksiasi, tunteitasi, tarpeitasi ja rajojasi ymmärrettävästi.',
+'Näkökulman vaihtaminen':'Kyky tarkastella tilannetta oman näkökulman lisäksi toisen ihmisen ja tarvittaessa ulkopuolisen tarkkailijan näkökulmasta. Tämä voi auttaa vähentämään väärintulkintoja ja lisäämään ymmärrystä.',
+'Empatia':'Empatiaan kuuluu toisen kokemuksen ymmärtämistä ja siihen tunnetasolla vastaamista. Empatia ei edellytä samaa mieltä olemista.',
+'Ymmärtäminen':'Ymmärtäminen tarkoittaa yritystä tavoittaa toisen kokemus, tarkoitus ja näkökulma mahdollisimman tarkasti.',
+'Dialogisuus':'Dialogissa osallistujat tutkivat yhdessä asioita, kuuntelevat, kysyvät ja voivat tarkistaa omia käsityksiään.',
+'Tulkintojen tunnistaminen':'Taito erottaa havainnot, omat tulkinnat ja tunteet auttaa keskustelemaan siitä, mitä tilanteessa todella tapahtui.',
+'Sanaton viestintä':'Ilmeet, eleet, äänenpainot ja tilankäyttö vaikuttavat siihen, miten viestimme välittyvät.',
+'Konfliktinhallinta':'Konfliktinhallinnassa tunnistetaan ristiriidan osapuolet, tarpeet ja tunteet sekä etsitään rakentavia toimintatapoja.',
+'Palautetaidot':'Palautteen antamisessa ja vastaanottamisessa tarvitaan selkeyttä, kunnioitusta ja halua oppia.',
+'Neuvottelutaidot':'Neuvottelussa tehdään näkyviksi osapuolten tarpeet ja etsitään ratkaisuja, joihin voidaan aidosti sitoutua.',
+'Tunnetaidot':'Tunnetaidot auttavat tunnistamaan, ymmärtämään, ilmaisemaan ja säätelemään tunteita erilaisissa kohtaamisissa.',
+'Luottamus':'Luottamus rakentuu kokemuksista, joissa toisen toiminta on riittävän luotettavaa ja turvallista.',
+'Kunnioitus':'Kunnioitus näkyy siinä, että toisen ihmisarvo, kokemukset ja itsemääräämisoikeus otetaan vakavasti.',
+'Vastuunotto':'Vastuunotto tarkoittaa oman toiminnan vaikutusten tunnistamista ja valmiutta korjata virheitä.',
+'Rajojen kunnioitus':'Toisen rajojen tunnustaminen ja suostumuksen huomioiminen rakentavat turvallista yhdessäoloa.',
+'Psykologinen turvallisuus':'Psykologinen turvallisuus mahdollistaa kysymisen, erehtymisen ja eri mieltä olemisen ilman kohtuutonta nöyryyttämisen pelkoa.',
+'Emotionaalinen turvallisuus':'Emotionaalisessa turvallisuudessa tunteille on tilaa eikä niitä käytetä toista vastaan.',
+'Ennakoitavuus':'Selkeä viestintä ja johdonmukainen toiminta auttavat ennakoimaan toisen käyttäytymistä.',
+'Suostumus':'Suostumus on vapaaehtoinen ja tilanteeseen sidottu lupa, jota voidaan myös muuttaa tai perua.',
+'Turvallinen kiintymys':'Turvallisessa kiintymyksessä läheisyys ja itsenäisyys voivat toteutua yhdessä.',
+'Korjaaminen':'Yhteyttä voidaan korjata myöntämällä virheitä, kuuntelemalla vaikutuksia ja muuttamalla toimintaa.',
+'Yhdenvertaisuus':'Yhdenvertaisuudessa jokaisen ihmisarvo ja oikeudet otetaan vakavasti erilaisuudesta riippumatta.',
+'Koskemattomuus':'Fyysinen ja psyykkinen koskemattomuus tarkoittavat oikeutta omaan kehoon ja turvalliseen kohteluun.'};
+const SPECIFIC={
+'Näkökulman vaihtaminen':{reasons:['Auttaa ymmärtämään erimielisyyksiä.','Voi lisätä empatiaa ja uteliaisuutta.','Auttaa tarkistamaan mustavalkoisia tulkintoja.','Tukee yhteistä ongelmanratkaisua.'],questions:['Mikä on minun tulkintani tilanteesta?','Mitä toinen voisi kokea tai tavoitella?','Mitä puolueeton tarkkailija voisi havaita?']},
+'Rajat':{reasons:['Selkeyttää, mikä on itselle sopivaa.','Tukee itsekunnioitusta.','Auttaa sopimaan yhteisistä toimintatavoista.'],questions:['Milloin tunsin viimeksi rajani ylittyvän?','Mistä tiesin sen?','Miten voisin ilmaista rajani selkeästi?']},
+'Luottamus':{reasons:['Vähentää epävarmuutta ihmissuhteessa.','Mahdollistaa asteittaisen avoimuuden.','Rakentuu tekojen kautta.'],questions:['Mikä käytännön teko lisää luottamustani?','Miten osoitan itse luotettavuutta?','Miten toimin, jos en voi pitää lupaustani?']}}
+DATA.self.color = '#b68172';
+DATA.self.palette = ['#daaa98','#a3c3b3','#a6b8ca','#d4c9ab','#8cb4b1','#bdafd0','#e0bcaa','#a8c6c1'];
+DATA.interaction.color = '#658fa6';
+DATA.interaction.palette = ['#87acbb','#99c4b5','#c3abc8','#e0b6a3','#86bcb2','#9eafd0','#d8c5a8','#82a7b7'];
+DATA.safety.color = '#78a69a';
+DATA.safety.palette = ['#8dc2b0','#bbc9a0','#b6c7d2','#d8b7ae','#90b8bb','#b1aad0','#d6c59f','#9bbba9'];
+let current='interaction', selected=null;
+const compass=document.getElementById('compass'), details=document.getElementById('details');
+function render(){
+  const data=DATA[current];
+  compass.style.setProperty('--accent', data.color);
+  const cx=430, cy=380, r=286, inner=195;
+  let lines = `<svg viewBox="0 0 860 760" aria-hidden="true">
+      <defs>
+        <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#1c2f4d" flood-opacity=".08"/></filter>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="301" fill="none" stroke="rgba(89,137,140,.17)" stroke-width="3"/>
+      <circle cx="${cx}" cy="${cy}" r="210" fill="none" stroke="rgba(89,137,140,.12)" stroke-dasharray="8 10" stroke-width="2"/>
+      <circle cx="${cx}" cy="${cy}" r="78" fill="none" stroke="rgba(63,42,36,.08)" stroke-width="2"/>
+  `;
+  data.topics.forEach((item,i)=>{
+    const angle = -Math.PI/2 + i*Math.PI*2/data.topics.length;
+    const tipX = cx + r*Math.cos(angle), tipY = cy + r*Math.sin(angle);
+    const base1X = cx + 98*Math.cos(angle-.09), base1Y = cy + 98*Math.sin(angle-.09);
+    const base2X = cx + 98*Math.cos(angle+.09), base2Y = cy + 98*Math.sin(angle+.09);
+    const midX = cx + inner*Math.cos(angle), midY = cy + inner*Math.sin(angle);
+    const color = data.palette[i % data.palette.length];
+    lines += `<path d="M ${base1X} ${base1Y} L ${tipX} ${tipY} L ${base2X} ${base2Y} Z" fill="${color}" fill-opacity=".82" stroke="rgba(69,103,106,.30)" stroke-width="1.3"/>
+      <path d="M ${cx} ${cy} L ${midX} ${midY}" stroke="rgba(63,42,36,.18)" stroke-width="2"/>
+      <circle cx="${tipX}" cy="${tipY}" r="6" fill="#fff" stroke="rgba(63,42,36,.42)" stroke-width="2"/>
+      <circle cx="${tipX}" cy="${tipY}" r="3" fill="${color}"/>
+    `;
+  });
+  lines += '</svg>';
+  compass.innerHTML = lines;
+  data.topics.forEach((name,i)=>{
+    const angle = -Math.PI/2 + i*Math.PI*2/data.topics.length;
+    const b=document.createElement('button');
+    b.className='compass-label'+(selected===name?' selected':'');
+    b.textContent=name;
+    b.setAttribute('aria-pressed',selected===name?'true':'false');
+    b.style.left=(cx+333*Math.cos(angle))+'px';
+    b.style.top=(cy+328*Math.sin(angle))+'px';
+    b.addEventListener('click',()=>choose(name));
+    compass.appendChild(b);
+  });
+  const center=document.createElement('div');
+  center.className='compass-center'+(current==='interaction'?' long-title':'');
+  center.textContent=data.title;
+  compass.appendChild(center);
+  document.querySelectorAll('[data-tab]').forEach(b=>{
+    const active=b.dataset.tab===current;
+    b.classList.toggle('active',active);
+    b.setAttribute('aria-selected',String(active));
+  });
+}
+function choose(name){
+  selected=name;
+  render();
+  const data=DATA[current], sp=SPECIFIC[name]||{};
+  const reasons=sp.reasons||['Auttaa havainnoimaan omaa tai toisen kokemusta.','Tarjoaa mahdollisuuden oppia ja harjoitella.','Voi tukea rakentavaa ihmisyhteyttä.'];
+  const questions=sp.questions||[`Miten ${name.toLowerCase()} näkyy omassa arjessani?`,'Missä tilanteessa haluaisin kehittää tätä taitoa tai ymmärrystä?','Mitä voisin kokeilla seuraavalla kerralla?'];
+  details.classList.remove('hidden');
+  details.innerHTML=`<div class="topic-head"><div><div class="eyebrow">${data.title.toUpperCase()}</div><h3>${name}</h3></div><button class="close" id="close-topic" aria-label="Sulje aihealue">✕</button></div><p>${DESCRIPTIONS[name]}</p><div class="detail-columns"><div class="detail-box"><h4>Miksi tämä on tärkeää?</h4><ul>${reasons.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="detail-box"><h4>Syvenny aiheeseen</h4><ul>${questions.map(x=>`<li>${x}</li>`).join('')}</ul></div></div><div class="detail-actions"><button class="btn primary" id="try-exercise">Tee harjoitus →</button><button class="btn" id="more-info">Pohdittavaa</button></div><div class="exercise-box hidden" id="exercise"><h4>Oma pohdinta</h4><p>${questions[0]}</p><textarea aria-label="Omat muistiinpanot" placeholder="Kirjoita ajatuksiasi tähän..."></textarea><small>Teksti pysyy tässä selaimessa vain sivun ollessa avoinna. Sitä ei lähetetä tai tallenneta.</small></div><div class="exercise-box hidden" id="info"><h4>Kolme kysymystä pohdittavaksi</h4><ol>${questions.map(x=>`<li>${x}</li>`).join('')}</ol></div>`;
+  document.getElementById('close-topic').onclick=()=>{selected=null;details.classList.add('hidden');render();};
+  document.getElementById('try-exercise').onclick=()=>document.getElementById('exercise').classList.toggle('hidden');
+  document.getElementById('more-info').onclick=()=>document.getElementById('info').classList.toggle('hidden');
+  details.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function switchTopic(id){current=id;selected=null;details.classList.add('hidden');render();}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTopic(b.dataset.tab)));
+document.getElementById('year').textContent=new Date().getFullYear();
+render();
+</script>
+</body>
+</html>
