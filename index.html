@@ -273,6 +273,17 @@ footer{color:#8a9d9f}
 @media(max-width:700px){.container{width:calc(100% - 28px)}.nav{gap:8px}.hero{padding:53px 0 30px}.hero h1{font-size:clamp(39px,8vw,54px)}.hero p{font-size:18px}.section{padding-bottom:50px}.intro h2{font-size:32px}.compass{width:720px;height:680px}.compass-label{width:136px;font-size:12px}.page-card{padding:25px}.links{gap:0}}
 @media(max-width:460px){.logo{font-size:20px}.links a{padding:8px 10px}.hero h1{font-size:39px}.explorer{padding:18px 9px}.compass{width:660px;height:650px}.tab{padding:9px 11px;font-size:12px;gap:8px}.tab-icon{width:24px;height:24px}.tab-icon svg{width:15px;height:15px}.topic-detail{padding:19px}}
 
+
+/* Etusivun filosofia – muu sivusto säilyy ennallaan */
+.philosophy-section{padding:22px 0 74px}
+.philosophy-inner{max-width:920px;margin:0 auto;padding:43px clamp(24px,5vw,65px);background:linear-gradient(145deg,#f0f7f4,#fbfaf5);border:1px solid #dbe9e3;border-radius:27px;box-shadow:0 12px 35px rgba(31,80,73,.055);color:#284a4b}
+.philosophy-eyebrow{display:block;color:#477a70;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:14px}
+.philosophy-inner h2{font:700 clamp(27px,3.5vw,38px)/1.18 Georgia,serif;letter-spacing:-.025em;margin:0 0 21px;color:#244b48}
+.philosophy-inner p{font-size:16px;line-height:1.8;color:#4b6768;margin:0 0 16px}
+.philosophy-inner .philosophy-lead{font-size:18px;color:#2f5c55;font-weight:600}
+.philosophy-inner blockquote{margin:25px 0;padding:6px 0 6px 23px;border-left:4px solid #6eaa99;font:italic 21px/1.5 Georgia,serif;color:#2b5a54}
+.philosophy-inner p:last-child{margin-bottom:0}
+@media(max-width:650px){.philosophy-section{padding:18px 0 48px}.philosophy-inner{padding:28px 23px}.philosophy-inner blockquote{font-size:19px}}
 </style>
 </head>
 <body>
@@ -316,6 +327,17 @@ footer{color:#8a9d9f}
       <div class="compass-wrap" aria-label="Vieritettävä aihealueiden kompassi"><div id="compass" class="compass"></div></div>
       <p class="help">Valitse kompassista aihe, niin löydät sen alta selityksen ja harjoituksen.</p>
       <div id="details" class="topic-detail hidden" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="container philosophy-section" aria-labelledby="philosophy-title">
+    <div class="philosophy-inner">
+      <span class="philosophy-eyebrow">Tietoisen Yhteyden ajatus</span>
+      <h2 id="philosophy-title">Tietoinen Yhteys ei ole suoritus, vaan harjoitus.</h2>
+      <p class="philosophy-lead">Tietoinen Yhteys on elinikäinen harjoitus, jossa opimme tuntemaan itsemme, rakentamaan turvallisuutta ja kohtaamaan toisemme.</p>
+      <p>Se ei ole täydellisyyden tavoittelua, saavutettava tila tai lopullinen päämäärä. Voimme olla keskeneräisiä, kokea epävarmuutta, erehtyä ja silti harjoitella tietoisempaa yhteyttä. Voimme tunnistaa virheitämme, ottaa niistä vastuuta ja oppia.</p>
+      <blockquote>Emme harjoittele tullaksemme joskus tietoisesti yhteydessä oleviksi ihmisiksi, vaan tulemme tietoisemmiksi harjoittamalla yhteyttä.</blockquote>
+      <p>Yhteys ei myöskään ole vain yhden ihmisen vastuulla. Se rakentuu vastavuoroisuudesta: siitä, miten kohtaamme toisemme, kunnioitamme rajojamme ja luomme tilaa molempien kokemuksille.</p>
     </div>
   </section>
 </main>
